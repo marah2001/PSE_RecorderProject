@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGirls Community Hub | Professional Edition</title>
+    <style>
+        /* Modern UI Design System */
+        :root {
+            --glass: rgba(255, 255, 255, 0.95);
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #fd79a8;
+            --bg: #f0f2f5;
+            --text: #2d3436;
+        }
+
+        body { 
+            background: var(--bg); 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            margin: 0; padding: 0; color: var(--text);
+            background-image: radial-gradient(#6c5ce722 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Hero Section with Animation */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white; padding: 40px 20px; text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .container { max-width: 1100px; margin: -50px auto 50px; padding: 20px; }
+
+        /* Statistics Board */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card {
+            background: var(--glass); padding: 25px; border-radius: 20px;
+            text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .stat-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .stat-card h3 { font-size: 32px; margin: 0; color: var(--primary); }
+
+        /* Main Content Layout */
+        .main-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
+        
+        .section {
+            background: var(--glass); padding: 30px; border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        h2 { font-size: 1.5rem; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+        h2::after { content: ''; flex: 1; height: 2px; background: #eee; }
+
+        /* Task & Project Items */
+        .item-row {
+            background: #fff; margin-bottom: 15px; padding: 15px 20px;
+            border-radius: 12px; display: flex; justify-content: space-between;
+            align-items: center; border: 1px solid #f0f0f0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .badge {
+            padding: 6px 14px; border-radius: 30px; font-size: 11px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .badge-sprint { background: #e1f5fe; color: #0288d1; }
+        .badge-new { background: #f3e5f5; color: #7b1fa2; }
+
+        /* Controls */
+        .input-group { display: flex; gap: 10px; margin-top: 30px; }
+        input { 
+            flex: 1; padding: 15px; border: 2px solid #eee; 
+            border-radius: 12px; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1); }
+
+        .btn {
+            background: var(--primary); color: white; border: none;
+            padding: 12px 30px; border-radius: 12px; font-weight: 600;
+            cursor: pointer; transition: 0.3s;
+        }
+        .btn:hover { background: #5649c0; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Responsive */
+        @media (max-width: 768px) { .main-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>TechGirls Hub <span style="font-weight: 300;">Management System</span></h1>
+    <p>Professional Software Engineering Project | 2026 Edition</p>
+</header>
+
+<div class="container">
+    <div class="stats-grid">
+        <div class="stat-card"><h3>12</h3><p>Active Repos</p></div>
+        <div class="stat-card"><h3>84%</h3><p>Code Coverage</p></div>
+        <div class="stat-card"><h3>Sprint 2</h3><p>Current Milestone</p></div>
+    </div>
+
+    <div class="main-layout">
+        <div class="section">
+            <h2>🚀 Sprint Backlog & Logic</h2>
+            <div id="task-list">
+                <div class="item-row">
+                    <div><strong>CI/CD Implementation</strong><br><small>Workflow Automation</small></div>
+                    <span class="badge badge-sprint">Sprint 1</span>
+                </div>
+                <div class="item-row">
+                    <div><strong>API Documentation</strong><br><small>Swagger/OpenAPI Setup</small></div>
+                    <span class="badge badge-sprint">Sprint 2</span>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="taskName" placeholder="Enter new Engineering Task (e.g. Dockerize App)...">
+                <button class="btn" onclick="addNewTask()">Add Task</button>
+            </div>
+        </div>
+
+        <div class="section" style="background: linear-gradient(to bottom, #fff, #f9f9f9);">
+            <h2 style="font-size: 1.1rem;">📊 Project Health</h2>
+            <div style="font-size: 14px; line-height: 1.8;">
+                <p>✅ <strong>Git Status:</strong> Clean</p>
+                <p>🛠 <strong>Environment:</strong> Development</p>
+                <p>👩‍💻 <strong>Lead Engineer:</strong> Marah</p>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                <p style="color: #666; font-style: italic;">"Quality is not an act, it is a habit."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addNewTask() {
+        const name = document.getElementById('taskName');
+        const list = document.getElementById('task-list');
+        
+        if(name.value.trim() !== "") {
+            const div = document.createElement('div');
+            div.className = 'item-row';
+            div.innerHTML = `
+                <div><strong>${name.value}</strong><br><small>Automated Log Entry</small></div>
+                <span class="badge badge-new">New Release</span>
+            `;
+            list.appendChild(div);
+            name.value = "";
+        }
+    }
+</script>
+
+</body>
+</html>
